@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="ecommerceApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="OrderHistoryController">
+
+<header>
+    <h1>Order History</h1>
+    <button ng-click="goBack()">Back to Shop</button>
+</header>
+
+<main>
+    <h2>Your Order History</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="order in orderHistory">
+                <td>{{ order.order_id }}</td>
+                <td>{{ order.product_id }}</td>
+                <td>{{ order.product_name }}</td>
+                <td>{{ order.quantity }}</td>
+                <td>₹{{ order.price}}</td>
+                <td>{{ order.order_date }}</td>
+                <td>
+                    <button ng-click="deleteOrder(order.order_id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+
+</body>
+</html>
